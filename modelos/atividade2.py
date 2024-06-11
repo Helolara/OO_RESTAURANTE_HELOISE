@@ -45,7 +45,7 @@ class Cliente:
         return f"Cliente: {self.nome}, Email: {self.email}, Telefone: {self.telefone}, Endereço: {self.endereco}"
 
 cliente1 = Cliente('Pedro Brecher', 'pedro.brecher@escola.pr.gov.br', '9258-7852', 'Rua Bom Jesus, 223')
-cliente2 = Cliente('Heloise de Castro', 'heloise.castro@escola.pr.gov.br', '9568-4562', 'Rua Beija Flor, 78')
+cliente2 = Cliente('Heloise Lara', 'heloise.castro@escola.pr.gov.br', '9568-4562', 'Rua Beija Flor, 78')
 cliente3 = Cliente('Leticia Rompava', 'leticia.rompava@escola.pr.gov.br', '9984-2598', 'Rua Ouro Verde, 45')
 
 print(cliente1)

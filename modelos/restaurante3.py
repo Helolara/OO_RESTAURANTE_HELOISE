@@ -1,41 +1,42 @@
-#1 inserir um decorator @property 
+#criando uma classe usando decoreitor @proprety
+
 class Restaurante:
-    def __init__(self, nome, categoria):
-        self.nome = nome
-        self.categoria = categoria
-        self.ativo = False
-        
-        def __STR__(self):
-            #return self.nome
-            return f'{self.nome}' | {self.categoria} | {self.ativo} 
+    restaurantes=[]
+    def __init__(self,nome,categoria):
+        self.nome=nome.title()
+        self.categoria=categoria.upper()
+        self._ativo=False
+        Restaurante.restaurantes.append(self)
 
-restaurante_praca = Restaurante()
-# 2 criando uma instância da classe Restaurante com construtor
-restaurante_praca = Restaurante ('Praça', 'Gourmet')
+    def __str__(self):
+       # return self.nome
+        return f'{self.nome}|{self.categoria}|{self.ativo}'
+    
+    @classmethod
+    def listar_restaurantes(cls):
+        print(f'Nome do Restaurante | Categoria | Status')
+        for restaurante in cls.restaurantes:
+            print(f'{restaurante.nome.ljust(20)}|{restaurante.categoria.ljust(20)}|{restaurante.ativo}')
 
-# questão 1
-restaurante_praca.categoria='Italiana'
-# questão 3
-restaurante_praca.ativo="ativo" if restaurante_praca.ativo else "inativo"
-print(f"O restaurante está {restaurante_praca}.")
-# questão 9
-print(f"Nome: {restaurante_praca.nome}, Categoria: {restaurante_praca.categoria}")
-
-# questão 6
-restaurante_pizza=Restaurante()
-restaurante_pizza.nome='Pizza Place'
-#questão 7
-restaurante_pizza.categoria='Fast Food'
-#questão 8
-restaurante_pizza.ativo=True 
+    @property
+    def ativo(self):
+        return '⌧' if self._ativo else '☐'
+    
+    def alternar_status(self):
+        self._ativo=not self.ativo
 
 
-# 3 consumindo os objetos criados
-restaurantes=[restaurante_praca,restaurante_pizza]
-# print(restaurantes)
+restaurante_praca=Restaurante('Praça','Gourmet')
+restaurante_pizza=Restaurante('Pizza Express','Italiana')
 
-print(dir(restaurante_praca))
-print('')
-print(vars(restaurante_praca))
-print('')
-print(restaurante_praca)
+restaurante_praca.alternar_status()
+
+# restaurantes=[restaurante_praca,restaurante_pizza]
+
+#print(restaurante_praca.ativo)
+
+# print(dir(restaurante_praca))
+# print('')
+# print(vars(restaurante_praca))
+#print(restaurante_praca)
+Restaurante.listar_restaurantes()
